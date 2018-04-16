@@ -1,0 +1,40 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/nb?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    host: localhost
+    password:
+    database: 2
+    port: 6379
+    pool:
+      min-idle: 200
+      max-idle: 200
+      max-wait: 200
+      max-active: 100
+    timeout: 200
+    testOnBorrow: true
+  profiles:
+    active: dev
+#文件上传支持
+  http:
+    multipart:
+      max-file-size: 100mb
+      max-request-size: 100mb
+#thymeleaf支持
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    suffix: .html
+    prefix: classpath:/templates/
+    content-type: text/html
+    cache: false
+    check-template-location: true
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.am.newblog.entity
+server:
+  context-path: /blog
